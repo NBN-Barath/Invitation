@@ -8,7 +8,7 @@ const WeddingFooter = () => {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   const shareWhatsApp = () => {
-    const text = encodeURIComponent("You're invited to Ravi & Karishma's wedding! 💍✨\n\nDate: 29th May 2025\nVenue: The Grand Palace Hall, Hyderabad\n\nView the invitation: " + window.location.href);
+    const text = encodeURIComponent("You're invited to Ravi & Karishma's wedding! 💍✨\n\nDate: 29th May 2025\nVenue: Sree Rajaganapathi Mahaal\n\nView the invitation: " + window.location.href);
     window.open(`https://wa.me/?text=${text}`, "_blank");
   };
 

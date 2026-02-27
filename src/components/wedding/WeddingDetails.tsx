@@ -9,7 +9,7 @@ const WeddingDetails = () => {
   const details = [
     { icon: Calendar, label: "Date", value: "Friday, 29th May 2025" },
     { icon: Clock, label: "Time", value: "10:00 AM onwards" },
-    { icon: MapPin, label: "Venue", value: "The Grand Palace Hall" },
+    { icon: MapPin, label: "Venue", value: "Sree Rajaganapathi Mahaal" },
   ];
 
   return (
@@ -64,12 +64,12 @@ const WeddingDetails = () => {
 
           <div className="mt-6 pt-6 border-t border-border">
             <p className="font-sans text-sm text-muted-foreground">
-              123 Wedding Avenue, Jubilee Hills, Hyderabad, Telangana 500033
+              S.F.No:611, 2A, Mangalam Rd, Vanjipalayam, Tiruppur, Tamil Nadu 641663
             </p>
           </div>
 
           <motion.a
-            href="https://maps.google.com/?q=Jubilee+Hills+Hyderabad"
+            href="https://maps.app.goo.gl/hTq9JKqCZvmwkj5X9"
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0 }}
