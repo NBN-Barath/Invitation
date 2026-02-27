@@ -90,11 +90,11 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.5 }}
         >
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium gold-text-gradient leading-tight">
-            Priya
+            Ravi
           </h1>
           <p className="font-serif-elegant text-2xl md:text-3xl text-muted-foreground my-3 italic">&amp;</p>
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium gold-text-gradient leading-tight">
-            Arjun
+            Karishma
           </h1>
         </motion.div>
 
@@ -106,7 +106,7 @@ const HeroSection = () => {
         >
           <div className="gold-divider" />
           <p className="font-serif-elegant text-xl md:text-2xl text-foreground mt-4 tracking-wider">
-            Saturday, 15th March 2026
+            Friday, 29th May 2025
           </p>
           <p className="font-sans text-sm text-muted-foreground mt-2 tracking-widest uppercase">
             Save the Date

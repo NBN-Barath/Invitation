@@ -34,12 +34,12 @@ const CoupleSection = () => {
             className="flex flex-col items-center"
           >
             <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-gold-light/40 shadow-lg mb-6">
-              <img src={brideImg} alt="Bride - Priya" className="w-full h-full object-cover" />
+              <img src={brideImg} alt="Bride - Karishma" className="w-full h-full object-cover" />
             </div>
-            <h3 className="font-serif text-2xl md:text-3xl text-foreground">Priya Sharma</h3>
+            <h3 className="font-serif text-2xl md:text-3xl text-foreground">Karishma</h3>
             <p className="font-serif-elegant text-lg text-primary italic mt-1">The Bride</p>
             <p className="font-sans text-muted-foreground mt-3 max-w-xs leading-relaxed text-sm">
-              A kind soul with a radiant smile, Priya brings warmth and grace to everyone she meets. Her love for art and family makes her truly special.
+              A kind soul with a radiant smile, Karishma brings warmth and grace to everyone she meets. Her love for art and family makes her truly special.
             </p>
           </motion.div>
 
@@ -51,12 +51,12 @@ const CoupleSection = () => {
             className="flex flex-col items-center"
           >
             <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-gold-light/40 shadow-lg mb-6">
-              <img src={groomImg} alt="Groom - Arjun" className="w-full h-full object-cover" />
+              <img src={groomImg} alt="Groom - Ravi" className="w-full h-full object-cover" />
             </div>
-            <h3 className="font-serif text-2xl md:text-3xl text-foreground">Arjun Patel</h3>
+            <h3 className="font-serif text-2xl md:text-3xl text-foreground">Ravi</h3>
             <p className="font-serif-elegant text-lg text-primary italic mt-1">The Groom</p>
             <p className="font-sans text-muted-foreground mt-3 max-w-xs leading-relaxed text-sm">
-              A man of values and vision, Arjun's gentle heart and determination inspire all around him. His devotion to family is unmatched.
+              A man of values and vision, Ravi's gentle heart and determination inspire all around him. His devotion to family is unmatched.
             </p>
           </motion.div>
         </div>

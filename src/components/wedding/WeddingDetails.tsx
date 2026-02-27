@@ -7,7 +7,7 @@ const WeddingDetails = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const details = [
-    { icon: Calendar, label: "Date", value: "Saturday, 15th March 2026" },
+    { icon: Calendar, label: "Date", value: "Friday, 29th May 2025" },
     { icon: Clock, label: "Time", value: "10:00 AM onwards" },
     { icon: MapPin, label: "Venue", value: "The Grand Palace Hall" },
   ];
