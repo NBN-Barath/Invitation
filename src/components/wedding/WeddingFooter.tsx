@@ -8,15 +8,15 @@ const WeddingFooter = () => {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   const shareWhatsApp = () => {
-    const text = encodeURIComponent("You're invited to Priya & Arjun's wedding! 💍✨\n\nDate: 15th March 2026\nVenue: The Grand Palace Hall, Hyderabad\n\nView the invitation: " + window.location.href);
+    const text = encodeURIComponent("You're invited to Ravi & Karishma's wedding! 💍✨\n\nDate: 29th May 2025\nVenue: The Grand Palace Hall, Hyderabad\n\nView the invitation: " + window.location.href);
     window.open(`https://wa.me/?text=${text}`, "_blank");
   };
 
   const shareGeneric = async () => {
     if (navigator.share) {
       await navigator.share({
-        title: "Wedding Invitation — Priya & Arjun",
-        text: "You're invited to celebrate the wedding of Priya & Arjun!",
+        title: "Wedding Invitation — Ravi & Karishma",
+        text: "You're invited to celebrate the wedding of Ravi & Karishma!",
         url: window.location.href,
       });
     } else {
@@ -38,7 +38,7 @@ const WeddingFooter = () => {
           We look forward to celebrating with you!
         </h3>
         <p className="font-serif-elegant text-lg text-muted-foreground italic">
-          Priya & Arjun
+          Ravi & Karishma
         </p>
 
         <div className="gold-divider mt-6" />
