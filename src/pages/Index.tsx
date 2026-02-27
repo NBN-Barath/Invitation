@@ -1,12 +1,23 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import HeroSection from "@/components/wedding/HeroSection";
+import CoupleSection from "@/components/wedding/CoupleSection";
+import WeddingDetails from "@/components/wedding/WeddingDetails";
+import EventSchedule from "@/components/wedding/EventSchedule";
+import PhotoGallery from "@/components/wedding/PhotoGallery";
+import RSVPSection from "@/components/wedding/RSVPSection";
+import WeddingFooter from "@/components/wedding/WeddingFooter";
+import FloralDecorations from "@/components/wedding/FloralDecorations";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="relative overflow-hidden">
+      <FloralDecorations />
+      <HeroSection />
+      <CoupleSection />
+      <WeddingDetails />
+      <EventSchedule />
+      <PhotoGallery />
+      <RSVPSection />
+      <WeddingFooter />
     </div>
   );
 };
