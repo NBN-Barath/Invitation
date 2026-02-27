@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 import {
   Select,
   SelectContent,
@@ -25,6 +26,7 @@ const iconOptions = [
 
 const Admin = () => {
   const [events, setEvents] = useState<ScheduleEvent[]>([]);
+  const [scheduleEnabled, setScheduleEnabled] = useState(false);
   const [newEvent, setNewEvent] = useState<Omit<ScheduleEvent, "id">>({
     icon: "Heart",
     title: "",
@@ -37,7 +39,15 @@ const Admin = () => {
     if (stored) {
       setEvents(JSON.parse(stored));
     }
+    const enabled = localStorage.getItem("scheduleEnabled");
+    setScheduleEnabled(enabled === "true");
   }, []);
+
+  const toggleScheduleEnabled = (enabled: boolean) => {
+    localStorage.setItem("scheduleEnabled", String(enabled));
+    setScheduleEnabled(enabled);
+    toast.success(enabled ? "Event schedule enabled" : "Event schedule disabled");
+  };
 
   const saveEvents = (updatedEvents: ScheduleEvent[]) => {
     localStorage.setItem("weddingEvents", JSON.stringify(updatedEvents));
@@ -87,6 +97,27 @@ const Admin = () => {
             Event Schedule Admin
           </h1>
         </div>
+
+        {/* Enable Schedule Toggle */}
+        <Card className="mb-8">
+          <CardContent className="pt-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <Label htmlFor="schedule-toggle" className="text-base font-medium">
+                  Enable Event Schedule
+                </Label>
+                <p className="text-sm text-muted-foreground">
+                  When disabled, visitors will see "Coming Soon" message
+                </p>
+              </div>
+              <Switch
+                id="schedule-toggle"
+                checked={scheduleEnabled}
+                onCheckedChange={toggleScheduleEnabled}
+              />
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Add New Event */}
         <Card className="mb-8">

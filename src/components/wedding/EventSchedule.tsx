@@ -22,13 +22,18 @@ const EventSchedule = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [events, setEvents] = useState<ScheduleEvent[]>([]);
+  const [isEnabled, setIsEnabled] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem("weddingEvents");
     if (stored) {
       setEvents(JSON.parse(stored));
     }
+    const enabled = localStorage.getItem("scheduleEnabled");
+    setIsEnabled(enabled === "true");
   }, []);
+
+  const showComingSoon = !isEnabled || events.length === 0;
 
   return (
     <section className="wedding-section bg-cream-dark/50" ref={ref}>
@@ -47,7 +52,7 @@ const EventSchedule = () => {
           <div className="gold-divider" />
         </motion.div>
 
-        {events.length === 0 ? (
+        {showComingSoon ? (
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
