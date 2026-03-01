@@ -1,37 +1,22 @@
 import { useState, useEffect } from "react";
-import { Plus, Trash2, Save, ArrowLeft } from "lucide-react";
+import { Plus, Trash2, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { ScheduleEvent } from "@/components/wedding/EventSchedule";
-
-const iconOptions = [
-  { value: "Sparkles", label: "✨ Sparkles" },
-  { value: "Heart", label: "❤️ Heart" },
-  { value: "Sun", label: "☀️ Sun" },
-  { value: "UtensilsCrossed", label: "🍽️ Dinner" },
-  { value: "Clock", label: "🕐 Clock" },
-];
 
 const Admin = () => {
   const [events, setEvents] = useState<ScheduleEvent[]>([]);
   const [scheduleEnabled, setScheduleEnabled] = useState(false);
   const [newEvent, setNewEvent] = useState<Omit<ScheduleEvent, "id">>({
-    icon: "Heart",
     title: "",
+    date: "",
+    day: "",
     time: "",
-    description: "",
   });
 
   useEffect(() => {
@@ -55,8 +40,8 @@ const Admin = () => {
   };
 
   const addEvent = () => {
-    if (!newEvent.title || !newEvent.time) {
-      toast.error("Please fill in title and time");
+    if (!newEvent.title || !newEvent.date || !newEvent.day || !newEvent.time) {
+      toast.error("Please fill in all fields");
       return;
     }
 
@@ -67,7 +52,7 @@ const Admin = () => {
 
     const updatedEvents = [...events, event];
     saveEvents(updatedEvents);
-    setNewEvent({ icon: "Heart", title: "", time: "", description: "" });
+    setNewEvent({ title: "", date: "", day: "", time: "" });
     toast.success("Event added!");
   };
 
@@ -141,6 +126,28 @@ const Admin = () => {
                 />
               </div>
               <div>
+                <Label htmlFor="date">Date</Label>
+                <Input
+                  id="date"
+                  value={newEvent.date}
+                  onChange={(e) =>
+                    setNewEvent({ ...newEvent, date: e.target.value })
+                  }
+                  placeholder="e.g., March 15, 2026"
+                />
+              </div>
+              <div>
+                <Label htmlFor="day">Day</Label>
+                <Input
+                  id="day"
+                  value={newEvent.day}
+                  onChange={(e) =>
+                    setNewEvent({ ...newEvent, day: e.target.value })
+                  }
+                  placeholder="e.g., Sunday"
+                />
+              </div>
+              <div>
                 <Label htmlFor="time">Time</Label>
                 <Input
                   id="time"
@@ -149,37 +156,6 @@ const Admin = () => {
                     setNewEvent({ ...newEvent, time: e.target.value })
                   }
                   placeholder="e.g., 10:00 AM – 11:30 AM"
-                />
-              </div>
-              <div>
-                <Label htmlFor="icon">Icon</Label>
-                <Select
-                  value={newEvent.icon}
-                  onValueChange={(value) =>
-                    setNewEvent({ ...newEvent, icon: value })
-                  }
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {iconOptions.map((opt) => (
-                      <SelectItem key={opt.value} value={opt.value}>
-                        {opt.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div>
-                <Label htmlFor="description">Description</Label>
-                <Input
-                  id="description"
-                  value={newEvent.description}
-                  onChange={(e) =>
-                    setNewEvent({ ...newEvent, description: e.target.value })
-                  }
-                  placeholder="Brief description"
                 />
               </div>
             </div>
@@ -218,35 +194,25 @@ const Admin = () => {
                         placeholder="Title"
                       />
                       <Input
+                        value={event.date}
+                        onChange={(e) =>
+                          updateEvent(event.id, "date", e.target.value)
+                        }
+                        placeholder="Date"
+                      />
+                      <Input
+                        value={event.day}
+                        onChange={(e) =>
+                          updateEvent(event.id, "day", e.target.value)
+                        }
+                        placeholder="Day"
+                      />
+                      <Input
                         value={event.time}
                         onChange={(e) =>
                           updateEvent(event.id, "time", e.target.value)
                         }
                         placeholder="Time"
-                      />
-                      <Select
-                        value={event.icon}
-                        onValueChange={(value) =>
-                          updateEvent(event.id, "icon", value)
-                        }
-                      >
-                        <SelectTrigger>
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {iconOptions.map((opt) => (
-                            <SelectItem key={opt.value} value={opt.value}>
-                              {opt.label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      <Input
-                        value={event.description}
-                        onChange={(e) =>
-                          updateEvent(event.id, "description", e.target.value)
-                        }
-                        placeholder="Description"
                       />
                     </div>
                     <Button

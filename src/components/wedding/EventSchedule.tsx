@@ -1,22 +1,16 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { Sparkles, Sun, UtensilsCrossed, Heart, Clock } from "lucide-react";
+import { Clock } from "lucide-react";
 
 export interface ScheduleEvent {
   id: string;
-  icon: string;
   title: string;
+  date: string;
+  day: string;
   time: string;
-  description: string;
 }
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Sparkles,
-  Sun,
-  UtensilsCrossed,
-  Heart,
-  Clock,
-};
+
 
 const EventSchedule = () => {
   const ref = useRef(null);
@@ -67,9 +61,7 @@ const EventSchedule = () => {
           </motion.div>
         ) : (
           <div className="mt-12 grid sm:grid-cols-2 gap-6">
-            {events.map((event, i) => {
-              const Icon = iconMap[event.icon] || Clock;
-              return (
+            {events.map((event, i) => (
                 <motion.div
                   key={event.id}
                   initial={{ opacity: 0, y: 25 }}
@@ -77,15 +69,12 @@ const EventSchedule = () => {
                   transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
                   className="wedding-card p-6 md:p-8 text-center group hover:shadow-lg transition-shadow duration-300"
                 >
-                  <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/10 transition-colors">
-                    <Icon className="w-6 h-6 text-primary" />
-                  </div>
                   <h3 className="font-serif text-xl text-foreground mb-1">{event.title}</h3>
-                  <p className="font-sans text-sm font-semibold text-primary tracking-wider">{event.time}</p>
-                  <p className="font-sans text-sm text-muted-foreground mt-2">{event.description}</p>
+                  <p className="font-sans text-sm font-semibold text-primary tracking-wider">{event.date}</p>
+                  <p className="font-sans text-sm text-muted-foreground">{event.day}</p>
+                  <p className="font-sans text-sm text-muted-foreground mt-2">{event.time}</p>
                 </motion.div>
-              );
-            })}
+              ))}
           </div>
         )}
       </div>
